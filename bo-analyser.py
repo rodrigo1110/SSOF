@@ -4,14 +4,15 @@
 import sys
 import json
 import input_parser
+import vulnerability_identifier
 import ast_transverser
 from Pattern import Pattern
 from OutputVulnerability import OutputVulnerability
+from FlowGraph import FlowGraph
+
 
 keys = ["vulnerability", "source", "sink", "unsanitized flows", "sanitized flows" ]
 patterns = []
-program_slice = []
-vulnerabilities = []
 output = []
 
 def main():
@@ -19,13 +20,18 @@ def main():
         print("Invalid number of arguments. Must be two json files.")
         return
 
-    input_parser.parsing(program_slice, patterns)
-    for pattern in patterns:
-        pattern.toString()
 
-    vulnerabilities = ast_transverser.transverse(program_slice, patterns)
+    program_slice = input_parser.parsing(patterns) #program slice is a dictionary with one key ("body").   
+                                                    #program_slice["body"] is a list of dictionaries with keys like ast_type, value ...
     
-    for vulnerability in vulnerabilities:
+    
+    flow_graph = ast_transverser.transverse(program_slice)
+    flow_graph.printFlowGraph()
+
+    vulnerabilities = vulnerability_identifier.identifyVulnerabilities(flow_graph, patterns)
+    
+    
+    for vulnerability in vulnerabilities: #format vulnerabilities found into output jason file
         identifier = vulnerability.identifier
         source = vulnerability.source
         sink = vulnerability.sink
