@@ -31,9 +31,9 @@ class FlowGraph:
 
 
     def add_child(self, childGraph):
-        if self != childGraph and childGraph not in self.children:
-            childGraph.__add_parent(self)
-            self.children.append(childGraph)
+        if self != childGraph and childGraph not in self.children: #Fix verification (childgraph not in self.children is always true due to python mistake comparing objects)
+            #childGraph.__add_parent(self)  #makes sense so that opposite path (from leaf to root) can be made but it never actually is used altough it should be.
+            self.children.append(childGraph)               #will be used if fix in line 34 is made(maybe)                                                                     
 
 
     def paths(self, k=10):
@@ -47,7 +47,6 @@ class FlowGraph:
             for path in child.paths(k-1):
                 paths.append([self.token_str] + path)
                 print(path)
-                #paths.append([self.token_str] + path)
         
         for el in paths: ##Temporary fix for making all elements of path strings (without some being lists)
             for path in el:

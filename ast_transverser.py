@@ -48,7 +48,7 @@ def searchFlowGraph(graph, token, k=10, visited = None):
 
 
 
-def right_to_left_op( left, right):
+def right_to_left_op(left, right):
     """ Appends each of nodes on the left as children of all the right ones """
     # No implicit flows because no sub-graph is created for condition inside if or while
     if not isinstance(left, list):
@@ -87,7 +87,7 @@ def right_to_left_op( left, right):
 
 
 def build_graph(program_slice):
-    return build_graph_aux(program_slice["body"])
+    build_graph_aux(program_slice["body"])
 
 
 def build_graph_aux(curr_tree):
@@ -112,6 +112,7 @@ def build_graph_from_list_aux(curr_tree):
             result_list += result
         else:
             result_list.append(result)
+    #return
     return result_list
 
 
@@ -130,7 +131,7 @@ def assignment(curr_tree):
     left = str(build_graph_aux(curr_tree['targets']))
     right = build_graph_aux(curr_tree['value'])
 
-    right_to_left_op(left, right if isinstance(right, list) else [right])
+    right_to_left_op(left, right)
     return [left]
 
 

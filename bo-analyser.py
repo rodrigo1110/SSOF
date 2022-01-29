@@ -11,7 +11,7 @@ from OutputVulnerability import OutputVulnerability
 from FlowGraph import FlowGraph
 
 
-keys = ["vulnerability", "source", "sink", "unsanitized flows", "sanitized flows" ]
+keys = ["vulnerability", "source", "sink", "unsanitized flows", "sanitized flows"]
 patterns = []
 output = []
 
