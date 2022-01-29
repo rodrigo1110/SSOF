@@ -1,8 +1,5 @@
 #Code for transversing AST and parse it into a flow graph. 
 #Need to understand code better and change a few things for more efficient vuln analysis in vulnerability_identifier.
-import ast
-import astor
-import astunparse
 from Pattern import Pattern
 from OutputVulnerability import OutputVulnerability
 from FlowGraph import FlowGraph
@@ -17,7 +14,7 @@ def transverse(program_slice):
     print(program_slice["body"])
     print("\n")
     print(program_slice["body"][0]["ast_type"])  #get specific field 
-    #print(astor.to_source(program_slice["body"]))
+    
     #return [OutputVulnerability("A","sourceA","sinkA","yes",[]),OutputVulnerability("B","sourceb","sinkB","no",[["one"]])] #just for testing
 
     build_graph(program_slice)

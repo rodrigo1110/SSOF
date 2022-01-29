@@ -3,9 +3,6 @@
 
 import sys
 import json
-import ast
-import astor
-import astunparse
 from Pattern import Pattern #import class Pattern from file Pattern
 
 
