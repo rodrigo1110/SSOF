@@ -32,7 +32,7 @@ class FlowGraph:
 
     def add_child(self, childGraph):
         if self != childGraph and childGraph not in self.children: #Fix verification (childgraph not in self.children is always true due to python mistake comparing objects)
-            #childGraph.__add_parent(self)  #makes sense so that opposite path (from leaf to root) can be made but it never actually is used altough it should be.
+            childGraph.__add_parent(self)  #makes sense so that opposite path (from leaf to root) can be made but it never actually is used altough it should be.
             self.children.append(childGraph)               #will be used if fix in line 34 is made(maybe)                                                                     
 
 
