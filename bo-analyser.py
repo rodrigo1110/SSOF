@@ -1,6 +1,5 @@
 #To run: python3 bo-analyser.py inputTests/1a-basic-flow.py.json inputTests/6b-patterns.json (for instance)
 #Output written in inputTests directory with same name as first argument + .output.json
-
 import sys
 import json
 import input_parser

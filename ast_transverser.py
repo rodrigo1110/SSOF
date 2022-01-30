@@ -125,7 +125,7 @@ def expression(curr_tree):
 
 
 def assignment(curr_tree):
-    left = str(build_graph_aux(curr_tree['targets']))
+    left = str(build_graph_aux(curr_tree['targets'])) #change later
     right = build_graph_aux(curr_tree['value'])
 
     right_to_left_op(left, right)
