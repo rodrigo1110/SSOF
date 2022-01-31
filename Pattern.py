@@ -1,4 +1,5 @@
 class Pattern:
+    
     def __init__(self,vulnerability,sources,sanitizers,sinks,implicit):
         self.vulnerability = vulnerability
         self.sources = sources
@@ -9,7 +10,6 @@ class Pattern:
         else:
             self.implicit = False
     
-
     def toString(self):
         print("-----Pattern-----")
         print("Vulnerability:", self.vulnerability)
@@ -17,5 +17,3 @@ class Pattern:
         print("Sanitizers:", self.sanitizers[:])
         print("Sinks:", self.sinks[:])
         print("Implicit:", self.implicit)
-
-    #Python: public variables => no need for getters and setters

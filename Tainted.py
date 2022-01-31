@@ -1,4 +1,5 @@
 class Tainted:
+    
     def __init__(self,origin,taintedList,sanitizedList):
         self.origin = origin
         self.taintedList = taintedList
